@@ -104,29 +104,52 @@ const TodoCard: React.FC<ITodoCardProps & InjectedFormProps> = (props) => {
   function getValues(values:any) {
     var arrayValues = [];
     var count=0;
-    arrayValues.push(values.get('value1'));
-    arrayValues.push(values.get('value2'));
-    arrayValues.push(values.get('value3'));
-    arrayValues.push(values.get('value4'));
-    
+    var list = todo.get('title');
+    arrayValues.push(values.get('value1').trim());
+    arrayValues.push(values.get('value2').trim());
+    arrayValues.push(values.get('value3').trim());
+    arrayValues.push(values.get('value4').trim());
+    console.log("Before",arrayValues, arrayValues.length );
    for(var i=0; i<arrayValues.length; i++)
    {
+    console.log(arrayValues[i]);
     if ( arrayValues[i] ==='') {
       count++;
       arrayValues.splice(i, 1); 
     }
    }
-   
-   console.log(arrayValues,count);
-    if (values.get('value1') === '') {
-      return  todo.get('title')+ '; ' + todo.get('value2')+'; '+ todo.get('value3') +'; ' +todo.get('value4')
-    } else if (values.get('value2') === '') {
-      return "value 2 empty"
-    }  else if (values.get('value3') === '') {
-      return "value 3 empty"
-    }  else if (values.get('value4') === '') {
-      return "value 4 empty"
+
+   for(var j=0; j<arrayValues.length; j++)
+   {
+    if ( arrayValues[j] ==='') {
+      count++;
+      arrayValues.splice(j, 1); 
     }
+   }
+
+   for(var k=0; k<arrayValues.length; k++)
+   {
+    if ( arrayValues[k] ==='') {
+      count++;
+      arrayValues.splice(k, 1); 
+    }
+   }
+   
+   console.log("After",arrayValues,count);
+   for(var l=0; l<arrayValues.length; l++)
+   {
+     list= list +"; "+arrayValues[l]; 
+   }
+   return list;
+    // if (values.get('value1') === '') {
+    //   return  todo.get('title')+ '; ' + todo.get('value2')+'; '+ todo.get('value3') +'; ' +todo.get('value4')
+    // } else if (values.get('value2') === '') {
+    //   return "value 2 empty"
+    // }  else if (values.get('value3') === '') {
+    //   return "value 3 empty"
+    // }  else if (values.get('value4') === '') {
+    //   return "value 4 empty"
+    // }
   }
   
 
