@@ -97,7 +97,7 @@ export const reducer = (state: Record<IReducerState> = INITIAL_STATE, action: IA
       } = payload;
 
       if (user.get('name') === '') {
-        // alert('name')
+        alert('Please Write User Name')
         return state;
       }
 
@@ -138,7 +138,7 @@ export const reducer = (state: Record<IReducerState> = INITIAL_STATE, action: IA
       } = payload;
 
       if (todo.get('title') === "") {
-        // alert('title');
+        //alert('Please Write the Title');
         return state;
       } 
 
@@ -183,7 +183,7 @@ export const reducer = (state: Record<IReducerState> = INITIAL_STATE, action: IA
       } = payload;
       
       if (subTodo.get('title') === '') {
-        // alert('no title')
+        alert('Please Write the Title')
         return state;
       }
 

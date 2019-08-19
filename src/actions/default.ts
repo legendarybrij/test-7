@@ -115,6 +115,16 @@ export class CompletedTodoAction implements IAction {
   ) {}
 }
 
+export class AddSubTodoAction implements IAction {
+  public readonly type = DefaultActionTypes.ADD_SUB_TODO;
+  constructor(
+    public payload: {
+      todoId: number,
+      subTodo: Record<ISubTodo>,
+    }
+  ) {}
+}
+
 export class CompleteSubTodoAction implements IAction {
   public readonly type = DefaultActionTypes.COMPLETE_SUBTODO;
   constructor(
@@ -131,16 +141,6 @@ export class DeleteTodoAction implements IAction {
   constructor(
     public payload: {
       todo: Record<ITodo>,
-    }
-  ) {}
-}
-
-export class AddSubTodoAction implements IAction {
-  public readonly type = DefaultActionTypes.ADD_SUB_TODO;
-  constructor(
-    public payload: {
-      todoId: number,
-      subTodo: Record<ISubTodo>,
     }
   ) {}
 }
