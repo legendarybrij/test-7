@@ -100,6 +100,36 @@ const TodoCard: React.FC<ITodoCardProps & InjectedFormProps> = (props) => {
     }));
     reset()
   }
+
+  function getValues(values:any) {
+    var arrayValues = [];
+    var count=0;
+    arrayValues.push(values.get('value1'));
+    arrayValues.push(values.get('value2'));
+    arrayValues.push(values.get('value3'));
+    arrayValues.push(values.get('value4'));
+    
+   for(var i=0; i<arrayValues.length; i++)
+   {
+    if ( arrayValues[i] ==='') {
+      count++;
+      arrayValues.splice(i, 1); 
+    }
+   }
+   
+   console.log(arrayValues,count);
+    if (values.get('value1') === '') {
+      return  todo.get('title')+ '; ' + todo.get('value2')+'; '+ todo.get('value3') +'; ' +todo.get('value4')
+    } else if (values.get('value2') === '') {
+      return "value 2 empty"
+    }  else if (values.get('value3') === '') {
+      return "value 3 empty"
+    }  else if (values.get('value4') === '') {
+      return "value 4 empty"
+    }
+  }
+  
+
   return (
     <Form<Record<Values>> onSubmit={handleSubmit(onSubmit)}>
       <Card className={classes.card}>
@@ -139,7 +169,8 @@ const TodoCard: React.FC<ITodoCardProps & InjectedFormProps> = (props) => {
                     root: complete ? classes.completed : '',
                   }}
                 >
-                  {todo.get('title')} {`${todo.get('value1')};${todo.get('value2')};${todo.get('value3')};${todo.get('value4')}`}}
+                 
+                 {getValues(todo)}
                 </Typography>
               </Grid>
               <Grid
